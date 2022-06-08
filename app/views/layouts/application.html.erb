@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="font-source m-auto container">
+    <nav class="p-5">
+      <a href="/">
+        <h1 class="text-5xl font-black mb-5">Quest</h1>
+      </a>
+    </nav>
+    <main class="px-10">
+      <%= yield %>
+    </main>
   </body>
 </html>
