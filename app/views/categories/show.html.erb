@@ -18,12 +18,12 @@
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-amber-300 font-medium inline-block">Today</h3>
-        <div class="mt-2.5">
-          <% @today.each do |task| %>
+        <% @today.each do |task| %>
+          <div class="mt-2.5">
             <%= check_box "check", task.id, {checked: task.completed} %>
             <%= link_to task.title, category_task_path(task.category_id, task.id) %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-red-300 font-medium inline-block">Overdue</h3>
