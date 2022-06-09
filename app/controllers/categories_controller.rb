@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
+    @today = @category.tasks.where(:date => Date.today)
   end
 
   # GET /categories/new
