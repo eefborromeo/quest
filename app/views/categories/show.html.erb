@@ -13,7 +13,7 @@
         <%= link_to 'Create a new task', new_category_task_path(@category.id), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
       </div>
       <div>
-        <h3 class="rounded-lg py-3 px-5 bg-green-300 font-medium inline-block">No Date</h3>
+        <h3 class="rounded-lg py-3 px-5 bg-blue-300 font-medium inline-block">No Date</h3>
         <% @no_date.each do |task| %>
           <div class="mt-2.5">
             <%= check_box "check", task.id, {checked: task.completed} %>
@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <div>
-        <h3 class="rounded-lg py-3 px-5 bg-amber-300 font-medium inline-block">Today</h3>
+        <h3 class="rounded-lg py-3 px-5 bg-orange-300 font-medium inline-block">Today</h3>
         <% @today.each do |task| %>
           <div class="mt-2.5">
             <%= check_box "check", task.id, {checked: task.completed} %>
@@ -48,6 +48,15 @@
           </div>
         <% end %>
       </div>
+      <div>
+      <h3 class="rounded-lg py-3 px-5 bg-green-300 font-medium inline-block">Done</h3>
+      <% @done.each do |task| %>
+        <div class="mt-2.5">
+          <%= check_box "check", task.id, {checked: task.completed} %>
+          <%= link_to task.title, category_task_path(task.category_id, task.id) %>
+        </div>
+      <% end %>
+    </div>
     </div>
   </div>
 </div>

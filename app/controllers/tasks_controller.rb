@@ -13,6 +13,10 @@ class TasksController < ApplicationController
         redirect_to category_path(@category)
     end
 
+    def update
+        
+    end
+
     private
     def set_category_id
         @category = Category.find(params[:category_id])

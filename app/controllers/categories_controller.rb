@@ -10,8 +10,9 @@ class CategoriesController < ApplicationController
   def show
     @no_date = @category.tasks.where(:date => nil)
     @this_week = @category.tasks.where(date: (Date.today + 1.day)...Date.today.end_of_week)
-    @today = @category.tasks.where(:date => Date.today)
+    @today = @category.tasks.where(:date => Date.today, :completed => false)
     @overdue = @category.tasks.where('date < ?', Date.today)
+    @done = @category.tasks.where(:completed => true)
   end
 
   # GET /categories/new
