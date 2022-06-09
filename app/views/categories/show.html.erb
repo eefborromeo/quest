@@ -3,8 +3,10 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
-    <h2 class="text-xl border-b py-2.5"><%= @category.category %></h2>
+    <div class="border-b py-2.5 flex justify-between items-end">
+      <h2 class="text-xl"><%= @category.category %></h2>
+      <%= link_to 'Back to categories', categories_path, class: "mt-5 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
 
     <div class="flex justify-between mt-5 items-baseline">
       <div>
@@ -12,9 +14,21 @@
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-green-300 font-medium inline-block">No Date</h3>
+        <% @no_date.each do |task| %>
+          <div class="mt-2.5">
+            <%= check_box "check", task.id, {checked: task.completed} %>
+            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
+          </div>
+        <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-yellow-300 font-medium inline-block">This week</h3>
+        <% @this_week.each do |task| %>
+          <div class="mt-2.5">
+            <%= check_box "check", task.id, {checked: task.completed} %>
+            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
+          </div>
+        <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-amber-300 font-medium inline-block">Today</h3>
@@ -35,21 +49,5 @@
         <% end %>
       </div>
     </div>
-      <table class="mt-2.5">
-        <tbody>
-          <% @category.tasks.each do |task| %>
-            <tr>
-            
-              <td>
-                <%= check_box "check", task.id, {checked: task.completed} %>
-              </td>
-              <td><%= task.title %></td>
-              <td><%= task.details %></td>
-              <td><%= task.date %></td>
-            </tr>
-          <% end %>
-        <tbody>
-      </table>
-      <%= link_to 'Back to categories', categories_path, class: "mt-5 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
