@@ -1,7 +1,15 @@
-<div class="flex items-baseline border-b pb-2.5">
-    <h2 class="text-3xl"><%= @task.title %></h2>
-    <p class="ml-3">Due: <%= @task.date.strftime('%B %d, %Y') %></p>
+<div class="flex items-baseline justify-between border-b pb-2.5">
+    <div class="flex items-baseline">
+        <h2 class="text-3xl"><%= @task.title %></h2>
+        <% if @task.date %>
+            <p class="ml-3">Due: <%= @task.date.strftime('%B %d, %Y') %></p>
+        <% end %>
+    </div>
     <div>
+        <%= link_to 'Back', category_path(@category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>
+        <%= link_to 'Edit', edit_category_task_path(@task.category, @task), class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 inline font-medium" %>
+        <%= button_to 'Delete', [@task.category, @task], method: :delete, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
+    </div>
 </div>
 </div>
 <div class="w-11/12 m-auto mt-3">
