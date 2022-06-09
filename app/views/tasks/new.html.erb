@@ -1,0 +1,16 @@
+<%= form_with model: [@category, @category.tasks.build] do |form| %>
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :details %>
+        <%= form.text_area :details %>
+    </div>
+    <div>
+        <%= form.label :completed %>
+        <%= form.check_box :completed %>
+    </div>
+    
+    <%= form.submit %>
+<% end %>
