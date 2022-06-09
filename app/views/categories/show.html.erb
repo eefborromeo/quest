@@ -15,37 +15,33 @@
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-blue-300 font-medium inline-block">No Date</h3>
         <% @no_date.each do |task| %>
-          <div class="mt-2.5">
-            <%= check_box "check", task.id, {checked: task.completed} %>
-            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
-          </div>
+          <ul class="mt-2.5 list-inside">
+            <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
+          </ul>
         <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-yellow-300 font-medium inline-block">This week</h3>
         <% @this_week.each do |task| %>
-          <div class="mt-2.5">
-            <%= check_box "check", task.id, {checked: task.completed} %>
-            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
-          </div>
+          <ul class="mt-2.5 list-inside">
+            <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
+          </ul>
         <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-orange-300 font-medium inline-block">Today</h3>
         <% @today.each do |task| %>
-          <div class="mt-2.5">
-            <%= check_box "check", task.id, {checked: task.completed} %>
-            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
-          </div>
+          <ul class="mt-2.5 list-inside">
+            <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
+          </ul>
         <% end %>
       </div>
       <div>
         <h3 class="rounded-lg py-3 px-5 bg-red-300 font-medium inline-block">Overdue</h3>
         <% @overdue.each do |task| %>
-          <div class="mt-2.5">
-            <%= check_box "check", task.id, {checked: task.completed} %>
-            <%= link_to task.title, category_task_path(task.category_id, task.id) %>
-          </div>
+          <ul class="mt-2.5 list-inside">
+            <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
+          </ul>
         <% end %>
       </div>
       <div>
