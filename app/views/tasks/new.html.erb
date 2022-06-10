@@ -1,4 +1,16 @@
-<%= form_with model: [@category, @category.tasks.build] do |form| %>
+<%= form_with model: [@category, @task] do |form| %>
+    <% if @task.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% @task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
     <div class="my-5">
         <%= form.label :title %>
         <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>

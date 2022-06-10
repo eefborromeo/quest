@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
-    before_action :set_category_id, only: [ :new, :create, :edit, :show, :update, :destroy,]
-    before_action :set_task_id, only: [:show, :edit, :update, :destroy]
+    before_action :set_category_id, only: [ :index, :new, :create, :edit, :show, :update, :destroy,]
+    before_action :set_task_id, only: [ :show, :edit, :update, :destroy]
     def index
+        redirect_to category_path(@category)
     end
 
     def show
     end
 
     def new
+        @task = Task.new
     end
 
     def edit
@@ -15,7 +17,11 @@ class TasksController < ApplicationController
 
     def create
         @task = @category.tasks.create(task_params)
-        redirect_to category_path(@category)
+        if @task.save 
+            redirect_to category_path(@category)
+        else
+            render :new
+        end
     end
 
 
