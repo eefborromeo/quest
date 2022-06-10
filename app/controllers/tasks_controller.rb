@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     def create
         @task = @category.tasks.create(task_params)
         if @task.save 
-            redirect_to category_path(@category)
+            redirect_to category_path(@category), notice: 'Task was successfully created.'
         else
             render :new
         end
