@@ -1,3 +1,6 @@
+<% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
 <div class="flex items-baseline justify-between border-b pb-2.5">
     <div class="flex items-baseline">
         <h2 class="text-3xl"><%= @task.title %></h2>
@@ -6,7 +9,7 @@
         <% end %>
     </div>
     <div>
-        <%= link_to 'Back', category_path(@category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>
+        <%= link_to 'Back to Category Page', category_path(@category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>
         <%= link_to 'Edit', edit_category_task_path(@task.category, @task), class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 inline font-medium" %>
         <%= button_to 'Delete', [@task.category, @task], method: :delete, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
     </div>

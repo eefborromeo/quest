@@ -3,18 +3,26 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <div class="border-b py-2.5 flex justify-between items-end">
+    <div class="border-b py-3 flex justify-between items-baseline">
       <h2 class="text-xl"><%= @category.category %></h2>
-      <%= link_to 'Back to categories', categories_path, class: "mt-5 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <div>
+        <%= link_to 'Create a new task', new_category_task_path(@category.id), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%= link_to 'Back to categories', categories_path, class: "mt-5 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
     </div>
 
     <div class="flex justify-between mt-5 items-baseline">
       <div>
-        <%= link_to 'Create a new task', new_category_task_path(@category.id), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <h3 class="rounded-lg py-3 px-5 bg-gray-100 font-medium">No Date</h3>
+        <% @no_date.each do |task| %>
+          <ul class="mt-2.5 list-inside">
+            <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
+          </ul>
+        <% end %>
       </div>
       <div>
-        <h3 class="rounded-lg py-3 px-5 bg-blue-300 font-medium inline-block">No Date</h3>
-        <% @no_date.each do |task| %>
+        <h3 class="rounded-lg py-3 px-5 bg-blue-300 font-medium inline-block">Upcoming</h3>
+        <% @upcoming.each do |task| %>
           <ul class="mt-2.5 list-inside">
             <li class="list-disc"><%= link_to task.title, category_task_path(task.category_id, task.id) %></li>
           </ul>

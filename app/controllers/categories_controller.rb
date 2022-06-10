@@ -9,9 +9,10 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   def show
     @no_date = @category.tasks.where(:date => nil, :completed => false)
-    @this_week = @category.tasks.where(date: (Date.today + 1.day)...Date.today.end_of_week)
+    @upcoming = @category.tasks.where.not(:date => Date.today).where.not('date < ?', Date.today).where('date > ?', Date.today.end_of_week).where(:completed => false)
+    @this_week = @category.tasks.where.not(:date => Date.today).where.not('date < ?', Date.today).where(:date => Date.today.beginning_of_week...Date.today.end_of_week, :completed => false)
     @today = @category.tasks.where(:date => Date.today, :completed => false)
-    @overdue = @category.tasks.where('date < ?', Date.today)
+    @overdue = @category.tasks.where('date < ?', Date.today).where(:completed => false)
     @done = @category.tasks.where(:completed => true)
   end
 
