@@ -4,6 +4,11 @@
         <% if @task.date %>
             <p class="ml-3">Due: <%= @task.date.strftime('%B %d, %Y') %></p>
         <% end %>
+        <% if @task.completed %>
+            <p class="ml-3">Completed</p>
+        <% else %>
+            <p class="ml-3">Not Completed</p>
+        <% end %>
     </div>
     <div>
         <%= link_to 'Back to Category Page', category_path(@category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>

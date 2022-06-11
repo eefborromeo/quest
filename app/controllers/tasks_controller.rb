@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
     def update
         if @task.update(task_params)
-            redirect_to category_task_path(@category), notice: 'Task was successfully updated.'
+            redirect_to category_path(@category), notice: 'Task was successfully updated.'
         else
             render :edit
         end
