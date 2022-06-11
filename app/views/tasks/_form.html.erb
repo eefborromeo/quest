@@ -13,11 +13,11 @@
   
     <div class="my-5">
         <%= form.label :title %>
-        <%= form.text_field :title,  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <%= form.text_field :title,  class: "block border outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     <div class="my-5">
         <%= form.label :details %>
-        <%= form.text_area :details,  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <%= form.text_area :details,  class: "block border outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     <div class="my-5">
         <%= form.label :completed %>
@@ -25,9 +25,9 @@
     </div>
     <div class="my-5">
         <%= form.label :date %>
-        <%= form.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+        <%= form.date_field :date, class: "block border outline-none px-3 py-2 mt-2" %>
     </div>
     
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-black text-white inline-block font-medium cursor-pointer" %>
     <%= link_to "Cancel", :back, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium cursor-pointer" %>
 <% end %>
