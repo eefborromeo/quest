@@ -1,7 +1,7 @@
 <div class="w-full">
   <div class="flex items-center border-b pb-3">
     <h1 class="font-bold text-3xl">Categories</h1>
-    <%= link_to 'New category', new_category_path, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
+    <%= link_to 'New Category', new_category_path, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
   </div>
 
   <div id="categories" class="w-11/12 m-auto">
@@ -10,7 +10,7 @@
       <%= link_to category.category, category, class: "w-8/12 text-xl" %>
       <div>
         <%= link_to 'Edit', edit_category_path(category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>
-        <%= button_to 'Delete', category_path(category), method: :delete, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
+        <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: "Are you sure?"}, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
       </div>
     </div>
     <% end %>
