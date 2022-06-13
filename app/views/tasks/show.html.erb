@@ -13,7 +13,7 @@
     <div>
         <%= link_to 'Back to Category Page', category_path(@category), class: "rounded-lg py-3 px-5 bg-gray-100 inline font-medium" %>
         <%= link_to 'Edit', edit_category_task_path(@task.category, @task), class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 inline font-medium" %>
-        <%= button_to 'Delete', [@task.category, @task], method: :delete, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
+        <%= button_to 'Delete', [@task.category, @task], method: :delete, data: { confirm: "Are you sure?"}, class: "rounded-lg py-3 px-5 ml-2 bg-gray-100 font-medium inline" %>
     </div>
 </div>
 </div>
