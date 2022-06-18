@@ -1,24 +1,5 @@
-# README
+# Quest Journal App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails application where users can create to-do lists and categorize their tasks according to their due date.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Live Demo](https://quest-journal-app.herokuapp.com/users/sign_in)
