@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /categories
   def index
@@ -9,12 +8,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
-    @no_date = @category.tasks.where(:date => nil, :completed => false)
-    @upcoming = @category.tasks.where.not(:date => Time.zone.today).where.not('date < ?', Time.zone.today).where('date > ?', Time.zone.today.end_of_week).where(:completed => false)
-    @this_week = @category.tasks.where.not(:date => Time.zone.today).where.not('date < ?', Time.zone.today).where(:date => Time.zone.today.beginning_of_week...Time.zone.today.end_of_week, :completed => false)
-    @today = @category.tasks.where(:date => Time.zone.today, :completed => false)
-    @overdue = @category.tasks.where('date < ?', Time.zone.today).where(:completed => false)
-    @done = @category.tasks.where(:completed => true)
+    @no_date = @category.tasks.with_no_date
+    @upcoming = @category.tasks.with_upcoming
+    @this_week = @category.tasks.with_this_week
+    @today = @category.tasks.with_today
+    @overdue = @category.tasks.with_overdue
+    @done = @category.tasks.with_done
   end
 
   # GET /categories/new
@@ -60,6 +59,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:category, :user_id)
+      params.require(:category).permit(:category)
     end
 end

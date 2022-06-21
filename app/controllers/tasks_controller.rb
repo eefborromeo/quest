@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-    before_action :set_category_id, only: [ :index, :new, :create, :edit, :show, :update, :destroy,]
-    before_action :set_task_id, only: [ :show, :edit, :update, :destroy]
+    before_action :load_category, only: [ :index, :new, :create, :edit, :show, :update, :destroy,]
+    before_action :load_task, only: [ :show, :edit, :update, :destroy]
     def index
         redirect_to category_path(@category)
     end
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = @category.tasks.create(task_params)
+        @task = @category.tasks.build(task_params)
         if @task.save 
             redirect_to category_path(@category), notice: 'Task was successfully created.'
         else
@@ -39,12 +39,12 @@ class TasksController < ApplicationController
     end
 
     private
-    def set_category_id
+    def load_category
         @category = current_user.categories.find(params[:category_id])
     end
 
-    def set_task_id
-        @task = Task.find(params[:id])
+    def load_task
+        @task = @category.tasks.find(params[:id])
     end
 
     def task_params
