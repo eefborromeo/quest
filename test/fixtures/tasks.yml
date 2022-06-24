@@ -7,7 +7,7 @@ one:
   category: one
 
 two:
-  title: MyString
-  details: MyText
-  completed: false
+  title: MyString2
+  details: MyText2
+  completed: true
   category: two
